@@ -11,6 +11,8 @@ public class TicTacToeGame {
 		boardLayout();
 		
 		choosingXorO();
+		
+		currentBoard();
 	}
 	
 	/**
@@ -60,5 +62,18 @@ public class TicTacToeGame {
 			choosingXorO();
 		}
 		System.out.println();
+	}
+
+	/**
+	 * Converts elements in the board to numbers & marks and displays board by calling method
+	 */
+	private static void currentBoard() {
+		int REDIX=10;
+		System.out.println("\n");
+	    for( int i=1; i<10; i++) {
+	    	if (element[i] !='X'&&element[i] !='O') 
+            element[i] = Character.forDigit(i,REDIX);
+        }
+	    displayingBoard();
 	}
 }
