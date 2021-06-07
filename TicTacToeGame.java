@@ -4,6 +4,7 @@ public class TicTacToeGame {
 	static char[] element;
 	static char userchoice,computerchoice;
 	static Scanner scan = new Scanner(System.in);
+	static int usernumber;
 	
 	public static void main(String[] args) {
 		System.out.println("Welcome to  TicTacToe game");
@@ -76,4 +77,21 @@ public class TicTacToeGame {
         }
 	    displayingBoard();
 	}
+
+	/**
+	 * Asking user for a slot number by displaying board with marks and numbers
+	 */
+	private static void userTurn() {
+		currentBoard();
+	    System.out.println("\nEnter a slot number from above to mark on it:\n");
+	    usernumber=scan.nextInt();
+	    if (usernumber < 1 || usernumber > 9 || element[usernumber]=='x' || element[usernumber]=='o') {
+	    	System.out.println("Your input is Invalid");
+	    	userTurn();
+	    } else {
+	    	element[usernumber]=userchoice;
+	    	System.out.println("Ho! You go for '"+usernumber+"'." );
+	    }
+	}
+
 }
