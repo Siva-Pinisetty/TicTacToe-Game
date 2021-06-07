@@ -6,6 +6,7 @@ public class TicTacToeGame {
 	static Scanner scan = new Scanner(System.in);
 	static int usernumber;
 	static Random random = new Random();
+	static int[] computer,win;
 	
 	public static void main(String[] args) {
 		System.out.println("Welcome to  TicTacToe game");
@@ -15,6 +16,8 @@ public class TicTacToeGame {
 		choosingXorO();
 		
 		currentBoard();
+		
+		tossingCoin();
 	}
 	
 	/**
@@ -92,6 +95,7 @@ public class TicTacToeGame {
 	    }else {
 	    	element[usernumber]=userchoice;
 	    	System.out.println("Ho! You go for '"+usernumber+"'." );
+	    	checkingUserWin();
 	    }
 	}
 	
@@ -112,13 +116,72 @@ public class TicTacToeGame {
 	    	}
 	    	if (flip == option) {
 	    		System.out.println("WOW! Good guess. You have to start the game\n");
+	    		userTurn();
 	    	} else {
 	    		System.out.println("Hurray! You lost. My Turn first\n");
+	    		computerFirstTurn();
 	    	}
 	    } else {
 	    	System.out.println("\nInvalid input Again");
 	    	tossingCoin();
 	    }
+	}
+	
+	/**
+	 * Making Computer First Turn as random from 1 to 9 and calls for user turn
+	 * @return Computer option
+	 */
+	private static void computerFirstTurn() {
+		computer=new int[9];
+		int  computeroption = random.nextInt(9)+1;
+		element[computeroption]=computerchoice;
+		System.out.println("Fist I go for '"+computeroption+"' now its your turn.");
+		userTurn();
+	}
+	
+	/**
+	 * Checking either user is win or not and calls for tie
+	 */
+	private static void checkingUserWin() {
+	    for (int i=1;i<9;i++) {
+	    	int win1 = array(i);
+	    	win= new int[3];
+	    	int j=0;
+	    	while (win1>0) {
+	    		int rem=win1%10;
+	    		win[j]=rem;
+	    		j++;
+	    		win1=win1/10;
+	    	}
+	    	if (element[win[0]]==element[win[1]]&&element[win[1]]==element[win[2]]) {
+	    		System.out.println("Excellent! Nice play. You are the winner");
+	    		System.exit(1);
+	    	}
+	    }
+	}
+	
+	/**
+	 * @param wincase
+	 * @return win sequence number
+	 */
+	public static int array(int wincase) {
+	       if (wincase==1) {
+	    	   return 123;
+	       } else if (wincase==2) {
+	    	   return 456;
+	       } else if (wincase==3) {
+	    	   return 789;
+	       } else if (wincase==4) {
+	    	   return 147;
+	       } else if (wincase==5) {
+	    	   return 258;
+	       } else if (wincase==6) {
+	    	   return 369;
+	       } else if (wincase==7) {
+	    	   return 159;
+	       } else {
+	    	   return 357;
+	       }
 	}
 
 }
