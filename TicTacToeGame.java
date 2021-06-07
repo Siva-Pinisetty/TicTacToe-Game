@@ -5,6 +5,7 @@ public class TicTacToeGame {
 	static char userchoice,computerchoice;
 	static Scanner scan = new Scanner(System.in);
 	static int usernumber;
+	static Random random = new Random();
 	
 	public static void main(String[] args) {
 		System.out.println("Welcome to  TicTacToe game");
@@ -91,6 +92,32 @@ public class TicTacToeGame {
 	    }else {
 	    	element[usernumber]=userchoice;
 	    	System.out.println("Ho! You go for '"+usernumber+"'." );
+	    }
+	}
+	
+	/**
+	 * Determining who's is starting, user or computer by tossing a coin
+	 *@param Head and Tail 
+	 *@return Either Player turn or Computer's
+	 */
+	private static void tossingCoin() {   
+	    System.out.println("Let me Toss a coin for who gonna play first\n\nJust choose either 1 for Head or 2 for Tail\n");
+	    int option=scan.nextInt();
+	    if ( option==1 || option==2 ) {
+	    	int flip = random.nextInt (2)+1;
+	    	if (flip==1) {
+	    		System.out.println("\nBy tossing Coin it shows HEAD\n");
+	    	} else {
+	    		System.out.println("\nBy tossing Coin it shows TAIL\n");
+	    	}
+	    	if (flip == option) {
+	    		System.out.println("WOW! Good guess. You have to start the game\n");
+	    	} else {
+	    		System.out.println("Hurray! You lost. My Turn first\n");
+	    	}
+	    } else {
+	    	System.out.println("\nInvalid input Again");
+	    	tossingCoin();
 	    }
 	}
 
