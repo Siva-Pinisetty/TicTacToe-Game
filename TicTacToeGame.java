@@ -88,6 +88,9 @@ public class TicTacToeGame {
 	    if (usernumber < 1 || usernumber > 9 || element[usernumber]=='x' || element[usernumber]=='o') {
 	    	System.out.println("Your input is Invalid");
 	    	userTurn();
+	    }else {
+	    	element[usernumber]=userchoice;
+	    	System.out.println("Ho! You go for '"+usernumber+"'." );
 	    }
 	}
 
