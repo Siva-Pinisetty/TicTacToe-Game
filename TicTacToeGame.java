@@ -159,12 +159,64 @@ public class TicTacToeGame {
 	    	}
 	    }
 	}
+			
+	/**
+	 * Checking for a tie and calls for computer to make for winning
+	 */
+	public static void checkingTie() {
+		for (int i=1; i<10; i++) {
+			if (element[i]=='X' || element[i]=='O') {
+				if (i==9) {
+					System.out.println("Nice try! It's Tie");
+					System.exit(1);
+				}else {
+				continue;
+				}
+			} else {
+				computerWin();
+			}
+		}
+	}
+
+	/**
+	 * Checking for computer win and calls for making user block
+	 */
+	public static void computerWin() {	
+	    int block[] = new int[3];
+	    for (int i=1;i<9;i++) {
+	    	int win1 = array(i);
+	    	win= new int[3];
+	    	int j=0;
+	    	while (win1>0) {
+	    		int rem=win1%10;
+	    		block[j]=rem;
+	    		j++;
+	    		win1=win1/10;
+	    	}
+	    	if (element[block[0]]==element[block[1]]&&element[block[0]]==computerchoice&&element[block[2]]!=userchoice) {
+	    	   element[block[2]]=computerchoice;
+	    	   System.out.println("My choice is '"+block[2]+"'");
+	    	   System.out.println("I won. Better Luck next time");
+	    	   System.exit(1);
+	       } else if (element[block[0]]==element[block[2]]&&element[block[2]]==computerchoice&&element[block[1]]!=userchoice) {
+	    	   element[block[1]]=computerchoice;
+	    	   System.out.println("My choice is '"+block[1]+"'");
+	    	   System.out.println("I won. Better Luck next time");
+	    	   System.exit(1);
+	       } else if (element[block[1]]==element[block[2]]&&element[block[2]]==computerchoice&&element[block[0]]!=userchoice) {
+	    	   element[block[0]]=computerchoice;
+	    	   System.out.println("My choice is '"+block[0]+"'");
+	    	   System.out.println("I won. Better Luck next time");
+	    	   System.exit(1);
+	       }
+	    }
+	}
 	
 	/**
 	 * @param wincase
 	 * @return win sequence number
 	 */
-	public static int array(int wincase) {
+	private static int array(int wincase) {
 	       if (wincase==1) {
 	    	   return 123;
 	       } else if (wincase==2) {
